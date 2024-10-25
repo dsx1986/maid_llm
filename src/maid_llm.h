@@ -11,7 +11,22 @@ extern "C" {
    #define EXPORT __attribute__((visibility("default"))) __attribute__((used))
 #endif
 
+// LLaMA.cpp cross-platform support
+#ifdef __APPLE__
+#include <TargetConditionals.h>
+#endif
+
+#if TARGET_OS_IOS
+// iOS-specific includes
+#include "../ios/llama_cpp/include/llama.h"
+
+#elif TARGET_OS_OSX
+// macOS-specific includes
+#include "../macos/llama_cpp/include/llama.h"
+#else
+// Other platforms
 #include "llama.h"
+#endif
 
 #include <stdbool.h>
 
