@@ -4,8 +4,8 @@ version: 1.0.1
 homepage: "https://github.com/Mobile-Artificial-Intelligence/maid_llm"
 
 environment:
-  sdk: '>=3.3.0 <4.0.0'
-  flutter: '>=3.3.0'
+  sdk: ">=3.3.0 <4.0.0"
+  flutter: ">=3.3.0"
 
 dependencies:
   crypto: ^3.0.3
@@ -21,16 +21,16 @@ dev_dependencies:
   flutter_lints: ^3.0.0
 
 ffigen:
-  name: 'maid_llm'
-  description: 'llama.cpp binding'
-  output: 'lib/src/bindings.dart'
+  name: "maid_llm"
+  description: "llama.cpp binding"
+  output: "lib/src/bindings.dart"
   ignore-source-errors: true
   headers:
     entry-points:
-      - 'src/maid_llm.h'
-      - 'src/llama_cpp/llama.h'
+      - "src/maid_llm.h"
+      - "src/llama_cpp/include/llama.h"
   compiler-opts:
-    - '-I/usr/lib/clang/17/include'
+    - "-I/usr/lib/clang/17/include"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
