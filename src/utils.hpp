@@ -2,9 +2,33 @@
 #define _UTILS_HPP
 
 #include "maid_llm.h"
-#include "llama.h"
-#include "ggml.h"
+// LLaMA.cpp cross-platform support
+#ifdef __APPLE__
+#include <TargetConditionals.h>
+#endif
+
+#if TARGET_OS_IOS
+// iOS-specific includes
+#include "../ios/llama_cpp/common/base64.hpp"
+#include "../ios/llama_cpp/common/common.h"
+#include "../ios/llama_cpp/common/sampling.h"
+#include "../ios/llama_cpp/ggml/include/ggml.h"
+#include "../ios/llama_cpp/include/llama.h"
+
+#elif TARGET_OS_OSX
+// macOS-specific includes
+#include "../macos/llama_cpp/common/base64.hpp"
+#include "../macos/llama_cpp/common/common.h"
+#include "../macos/llama_cpp/common/sampling.h"
+#include "../macos/llama_cpp/ggml/include/ggml.h"
+#include "../macos/llama_cpp/include/llama.h"
+#else
+// Other platforms
+#include "base64.hpp"
 #include "common.h"
+#include "ggml.h"
+#include "llama.h"
+#endif
 
 #include <chrono>
 #include <cassert>
